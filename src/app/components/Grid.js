@@ -1,19 +1,24 @@
- "use client"
- import {useState} from 'react'
- import Card from '@/app/components/Card'
- import Map from '@/app/components/Map'
+"use client"
+import {useState, useEffect} from 'react'
+import Card from '@/app/components/Card'
+import Map from '@/app/components/Map'
 
- const Grid = ({properties}) => {
+const Grid = ({properties}) => {
     const [input, setInput] = useState('')
-     const [houses, setHouses] = useState(properties)
-     const [locations, setLocations] = useState(houses.map(house => house.location))
-    
-    const setInputAndMapLocations = (value) =>{
-         setInput(value)
-         setHouses(properties.filter(property =>
-             property.name.toLowerCase().includes(value.toLowerCase())))
-        setLocations(houses.map(house => house.location))
-    }
+    const [houses, setHouses] = useState(properties)
+    const [locations, setLocations] = useState(houses.map(house => house.location))
+
+    useEffect(() => {
+        // Atualiza locations somente quando houses muda
+        setLocations(houses.map(house => house.location));
+    }, [houses]);
+
+    const setInputAndMapLocations = (value) => {
+        setInput(value);
+        setHouses(properties.filter(property =>
+            property.name.toLowerCase().includes(value.toLowerCase())
+        ));
+    };
 
     return (
         <>

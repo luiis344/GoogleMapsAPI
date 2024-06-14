@@ -36,7 +36,7 @@ nav{
     margin: 10px 5px 10px 20px;
 }
 
-.search-bar button {
+ button {
     background-color: rgb(0, 106, 255);
     color: rgb(255, 255, 255);
     border: none;
@@ -53,7 +53,7 @@ article {
     width: 50vw;
 }
 
-article.listing {
+article.listings {
     box-shadow: rgba(60,64,67,0.3) -2px 0 2px;
     padding: 20px;
 }
